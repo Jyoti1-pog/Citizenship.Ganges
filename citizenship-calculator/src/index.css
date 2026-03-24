@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary-900: #0A1F44;
+  --color-accent-gold: #C8A95E;
+}
+
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-900 antialiased;
+  }
+}
+
+@layer components {
+  /* Custom UI enhancements for React Datepicker */
+  .react-datepicker {
+    @apply font-sans border border-slate-200 shadow-xl rounded-xl overflow-hidden;
+  }
+  .react-datepicker__header {
+    @apply bg-slate-50 border-b border-slate-200 py-3;
+  }
+  .react-datepicker__year-read-view--down-arrow, .react-datepicker__month-read-view--down-arrow, .react-datepicker__month-year-read-view--down-arrow {
+    @apply top-[5px];
+  }
+  .react-datepicker__day--selected, .react-datepicker__day--in-selecting-range, .react-datepicker__day--in-range, .react-datepicker__month-text--selected, .react-datepicker__month-text--in-selecting-range, .react-datepicker__month-text--in-range, .react-datepicker__quarter-text--selected, .react-datepicker__quarter-text--in-selecting-range, .react-datepicker__quarter-text--in-range, .react-datepicker__year-text--selected, .react-datepicker__year-text--in-selecting-range, .react-datepicker__year-text--in-range {
+    @apply !bg-blue-600 rounded-[8px] hover:!bg-blue-700;
+  }
+  .react-datepicker__day:hover {
+    @apply rounded-[8px] bg-slate-100;
+  }
+  .react-datepicker__day--keyboard-selected {
+    @apply rounded-[8px] bg-blue-100 text-blue-800;
+  }
+}
