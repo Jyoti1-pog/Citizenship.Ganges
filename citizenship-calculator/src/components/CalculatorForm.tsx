@@ -82,7 +82,7 @@ export function CalculatorForm() {
                 <DatePicker
                   label="Date of Birth"
                   required
-                  value={field.value}
+                  value={field.value as Date | null}
                   onChange={(date: Date | null) => {
                     if (date) field.onChange(date);
                   }}
