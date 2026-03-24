@@ -5,22 +5,23 @@ import { CalendarIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { subYears } from 'date-fns';
 
-type CustomDatePickerProps = Omit<React.ComponentProps<typeof ReactDatePicker>, 'onChange'> & {
-  value?: Date;
+interface CustomDatePickerProps {
+  value?: Date | null;
   onChange: (date: Date | null) => void;
   label?: string;
   error?: string;
   className?: string;
+  required?: boolean;
 }
 
 export const DatePicker = forwardRef<ReactDatePicker, CustomDatePickerProps>(
-  ({ value, onChange, label, error, className, ...props }, ref) => {
+  ({ value, onChange, label, error, className, required }, ref) => {
     return (
       <div className="w-full relative space-y-2">
         {label && (
           <label className="text-sm font-semibold text-slate-700 block drop-shadow-sm">
             {label}
-            {props.required && <span className="text-red-500 ml-1">*</span>}
+            {required && <span className="text-red-500 ml-1">*</span>}
           </label>
         )}
         <div className="relative group">
@@ -40,7 +41,7 @@ export const DatePicker = forwardRef<ReactDatePicker, CustomDatePickerProps>(
               className
             )}
             wrapperClassName="w-full"
-            {...props}
+            required={required}
           />
           <div className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-hover:text-blue-500 transition-colors pointer-events-none">
             <CalendarIcon className="w-4 h-4" />

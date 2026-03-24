@@ -83,7 +83,9 @@ export function CalculatorForm() {
                   label="Date of Birth"
                   required
                   value={field.value}
-                  onChange={field.onChange}
+                  onChange={(date: Date | null) => {
+                    if (date) field.onChange(date);
+                  }}
                   error={errors.dob?.message}
                 />
                 <AnimatePresence>
