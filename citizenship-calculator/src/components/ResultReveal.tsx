@@ -139,11 +139,14 @@ export default function ResultReveal() {
         </div>
 
         {/* Playful aesthetic badge */}
-        <motion.div 
+        <motion.a 
+          href="https://www.ganges.world/"
+          target="_blank"
+          rel="noopener noreferrer"
           initial={{ opacity: 0, y: 10, scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ delay: 0.85, type: 'spring', stiffness: 200 }}
-          className="w-full relative overflow-hidden group mb-10 p-[1px] rounded-2xl bg-gradient-to-r from-amber-200 via-orange-300 to-rose-300 shadow-sm hover:shadow-md transition-all duration-500"
+          className="w-full relative overflow-hidden group mb-10 p-[1px] rounded-2xl bg-gradient-to-r from-amber-200 via-orange-300 to-rose-300 shadow-sm hover:shadow-md hover:-translate-y-1 active:translate-y-0 transition-transform duration-300 block cursor-pointer"
         >
           <div className="w-full flex items-center justify-center gap-3 px-6 py-4 rounded-2xl bg-white/95 backdrop-blur-xl group-hover:bg-white/90 transition-colors">
             <span className="relative flex h-2.5 w-2.5">
@@ -155,7 +158,7 @@ export default function ResultReveal() {
             </span>
             <span className="text-lg">✨</span>
           </div>
-        </motion.div>
+        </motion.a>
 
         {/* Actions & Support Section */}
         <motion.div 
