@@ -52,9 +52,10 @@ export function HeroSection() {
       </motion.div>
       
       <motion.h1 
-        className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-6 mt-2 relative inline-block text-primary-navy [perspective:1000px]"
+        className="text-[clamp(2.5rem,8vw,4.5rem)] font-extrabold tracking-tight mb-6 mt-2 relative inline-block text-primary-navy [perspective:1000px]"
+        style={{ lineHeight: 1.15 }}
       >
-        <span className="relative z-10 flex flex-wrap justify-center gap-x-2">
+        <span className="relative z-10 flex flex-wrap justify-center gap-x-[0.25em]">
           {title.split(" ").map((word, index) => (
             <motion.span variants={wordAnimation} key={index} className="inline-block origin-bottom shadow-sm drop-shadow-sm">
               {word}
@@ -105,11 +106,10 @@ export function HeroSection() {
 
       <motion.div variants={itemVariants} className="w-full relative">
         <div className="absolute -inset-2 bg-accent-orange/30 blur-2xl rounded-full animate-pulse top-2 pointer-events-none"></div>
-        {/* Navy Button exactly matching the "Apply Now!" in the poster */}
         <Button 
           onClick={setForm} 
           size="lg" 
-          className="relative overflow-hidden group w-full sm:w-[90%] mx-auto bg-primary-navy hover:bg-[#002543] text-accent-orange font-extrabold text-2xl h-16 shadow-[0_15px_40px_rgba(0,56,101,0.4)] hover:-translate-y-1 active:translate-y-1 rounded-full transition-all border-b-[6px] border-[#00182C] active:border-b-[2px]"
+          className="relative overflow-hidden group w-full sm:w-[90%] mx-auto bg-gradient-to-r from-primary-navy to-[#0F766E] hover:from-[#0F766E] hover:to-primary-navy text-accent-orange font-extrabold text-2xl h-16 shadow-[0_15px_40px_rgba(0,56,101,0.4)] hover:-translate-y-1 active:translate-y-1 rounded-full transition-all border-b-[6px] border-[#00182C] active:border-b-[2px]"
         >
           <motion.div 
             animate={{ x: ["-100%", "200%"], opacity: [0, 1, 0] }} 

@@ -173,7 +173,7 @@ export default function ResultReveal() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.9 }}
-          className="w-full flex flex-col items-center pt-8 border-t border-slate-200"
+          className="w-full flex flex-col items-center pt-8 border-t border-slate-200 pb-20 md:pb-0"
         >
           <div className="w-full flex items-center justify-between mb-5">
             <h4 className="text-xs font-bold text-primary-navy/50 uppercase tracking-wider">Support & Sharing</h4>
@@ -200,7 +200,7 @@ export default function ResultReveal() {
           </div>
 
           {/* Elegant Email Text Layout */}
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center mb-6 md:mb-0">
             <span className="text-xs text-primary-navy/50 font-bold tracking-wide uppercase mb-1">Email us directly</span>
             <a 
               href="mailto:support@ganges.world" 
@@ -214,14 +214,18 @@ export default function ResultReveal() {
             </a>
           </div>
           
-          <Button 
-            onClick={setLanding} 
-            variant="ghost" 
-            className="w-full mt-8 h-12 text-primary-navy/60 hover:text-primary-navy gap-2 hover:bg-slate-100 transition-all rounded-xl font-bold"
-          >
-            <Repeat className="w-4 h-4" />
-            Restart Assessment
-          </Button>
+          {/* Mobile Sticky Bottom Action Bar Wrapper for Primary Action */}
+          <div className="fixed bottom-0 left-0 right-0 p-4 pb-8 sm:pb-4 bg-white/80 backdrop-blur-xl border-t border-slate-200 z-[60] shadow-[0_-15px_40px_rgba(0,0,0,0.06)] md:static md:bg-transparent md:border-none md:p-0 md:shadow-none md:mt-8 md:block flex flex-col items-center">
+            <div className="max-w-xl mx-auto w-full">
+              <Button 
+                onClick={setLanding} 
+                className="w-full h-14 sm:h-12 bg-primary-navy text-accent-orange hover:bg-[#002543] gap-2 rounded-xl font-bold shadow-lg md:shadow-none md:bg-transparent md:text-primary-navy/60 md:hover:text-primary-navy md:hover:bg-slate-100 transition-all border-b-[3px] border-[#00182C] active:border-b-[1px] md:border-none"
+              >
+                <Repeat className="w-5 h-5 md:w-4 md:h-4" />
+                <span className="text-lg md:text-base">Restart Assessment</span>
+              </Button>
+            </div>
+          </div>
         </motion.div>
       </div>
     </motion.div>

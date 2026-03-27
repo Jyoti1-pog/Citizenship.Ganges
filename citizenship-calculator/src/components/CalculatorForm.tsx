@@ -174,22 +174,28 @@ export function CalculatorForm() {
             </p>
           </motion.div>
 
-          <motion.div variants={formItemVariant} className="relative">
-            <div className="absolute -inset-2 bg-accent-orange/30 blur-2xl rounded-full animate-pulse top-2 pointer-events-none"></div>
-            <Button
-              type="submit"
-              className="w-full relative overflow-hidden group h-14 bg-primary-navy hover:bg-[#002543] text-accent-orange font-extrabold text-xl shadow-[0_8px_20px_rgba(0,56,101,0.2)] border-b-[4px] border-[#00182C] rounded-full hover:-translate-y-0.5 active:translate-y-1 active:border-b-[2px] transition-all"
-              disabled={isSubmitting}
-            >
-              <motion.div 
-                animate={{ x: ["-100%", "200%"], opacity: [0, 1, 0] }} 
-                transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut", repeatDelay: 2 }}
-                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-12"
-              />
-              <span className="group-hover:scale-105 transition-transform duration-300">
-                {isSubmitting ? 'Initializing...' : 'Analyze Status'}
-              </span>
-            </Button>
+          <motion.div 
+            variants={formItemVariant} 
+            // Mobile sticky bottom bar implementation
+            className="fixed bottom-0 left-0 right-0 p-4 pb-8 sm:pb-4 bg-white/80 backdrop-blur-xl border-t border-slate-200 z-[60] shadow-[0_-15px_40px_rgba(0,0,0,0.06)] md:static md:bg-transparent md:border-none md:p-0 md:shadow-none"
+          >
+            <div className="relative w-full max-w-lg mx-auto">
+              <div className="absolute -inset-2 bg-accent-orange/30 blur-2xl rounded-full animate-pulse top-2 pointer-events-none md:block hidden"></div>
+              <Button
+                type="submit"
+                className="w-full relative overflow-hidden group h-14 sm:h-16 bg-gradient-to-r from-primary-navy to-[#002543] hover:from-[#002543] hover:to-[#00182C] text-accent-orange font-extrabold text-xl shadow-[0_8px_20px_rgba(0,56,101,0.2)] border-b-[4px] border-[#00182C] rounded-full hover:-translate-y-0.5 active:translate-y-1 active:border-b-[2px] transition-all"
+                disabled={isSubmitting}
+              >
+                <motion.div 
+                  animate={{ x: ["-100%", "200%"], opacity: [0, 1, 0] }} 
+                  transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut", repeatDelay: 2 }}
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-12"
+                />
+                <span className="group-hover:scale-105 transition-transform duration-300">
+                  {isSubmitting ? 'Processing...' : 'Analyze Status'}
+                </span>
+              </Button>
+            </div>
           </motion.div>
         </motion.form>
       </Card>

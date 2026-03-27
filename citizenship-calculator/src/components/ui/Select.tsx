@@ -21,7 +21,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
           <select
             id={id}
             className={cn(
-              'flex h-11 w-full appearance-none rounded-md border border-slate-300 bg-white px-3 py-2 pr-10 text-base text-primary-navy ring-offset-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-orange disabled:cursor-not-allowed disabled:opacity-50',
+              'flex h-11 min-h-[44px] w-full appearance-none rounded-md border border-slate-300 bg-white px-3 py-2 pr-10 text-base text-primary-navy ring-offset-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-orange disabled:cursor-not-allowed disabled:opacity-50',
               error && 'border-red-500 focus-visible:ring-red-500',
               className
             )}
