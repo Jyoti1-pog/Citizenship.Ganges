@@ -8,13 +8,13 @@ interface FadeInProps extends HTMLMotionProps<'div'> {
   duration?: number;
 }
 
-export function FadeIn({ children, className, delay = 0, duration = 0.4, ...props }: FadeInProps) {
+export function FadeIn({ children, className, delay = 0, duration = 0.5, ...props }: FadeInProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 15 }}
+      initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -15 }}
-      transition={{ duration, delay, ease: 'easeOut' }}
+      exit={{ opacity: 0, y: -20 }}
+      transition={{ duration, delay, ease: [0.22, 1, 0.36, 1] }}
       className={cn(className)}
       {...props}
     >

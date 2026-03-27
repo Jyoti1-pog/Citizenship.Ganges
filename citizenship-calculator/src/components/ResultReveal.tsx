@@ -63,47 +63,55 @@ export default function ResultReveal() {
           numberOfPieces={800}
           gravity={0.15}
           initialVelocityY={25}
-          colors={['#0A1F44', '#C8A95E', '#ffffff', '#3b82f6', '#22c55e', '#fbbf24']}
+          colors={['#ffffff', '#F39C12', '#D32F2F', '#E67E22', '#FDF5E6']}
           className="z-[999]"
         />
         </div>
       )}
       
-      {/* SaaS Style Ambient Glow */}
-      <div className={`absolute -inset-4 blur-3xl opacity-30 rounded-[3rem] ${isHighProbability ? 'bg-gradient-to-br from-emerald-500 to-teal-600' : 'bg-gradient-to-br from-amber-500 to-red-600'} animate-pulse`}></div>
+      {/* Light Poster Style Ambient Glow */}
+      <div className={`absolute -inset-4 blur-3xl opacity-20 rounded-[3rem] ${isHighProbability ? 'bg-emerald-400' : 'bg-accent-orange'} animate-pulse`}></div>
 
-      <div className="relative w-full p-8 sm:p-10 bg-white/95 backdrop-blur-2xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] rounded-3xl border border-slate-200/60 overflow-hidden flex flex-col items-center">
+      <div className="relative w-full p-8 sm:p-10 bg-white/90 backdrop-blur-2xl shadow-[0_30px_60px_rgba(0,56,101,0.12)] rounded-3xl border border-white/60 overflow-hidden flex flex-col items-center">
         
         {/* Subtle noise texture */}
-        <div className="absolute inset-0 opacity-[0.02] mix-blend-overlay pointer-events-none" style={{ backgroundImage: "url('data:image/svg+xml,%3Csvg viewBox=\"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cfilter id=\"noiseFilter\"%3E%3CfeTurbulence type=\"fractalNoise\" baseFrequency=\"0.65\" numOctaves=\"3\" stitchTiles=\"stitch\"/%3E%3C/filter%3E%3Crect width=\"100%25\" height=\"100%25\" filter=\"url(%23noiseFilter)\"/%3E%3C/svg%3E')" }}></div>
+        <div className="absolute inset-0 opacity-[0.03] mix-blend-overlay pointer-events-none" style={{ backgroundImage: "url('data:image/svg+xml,%3Csvg viewBox=\"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cfilter id=\"noiseFilter\"%3E%3CfeTurbulence type=\"fractalNoise\" baseFrequency=\"0.65\" numOctaves=\"3\" stitchTiles=\"stitch\"/%3E%3C/filter%3E%3Crect width=\"100%25\" height=\"100%25\" filter=\"url(%23noiseFilter)\"/%3E%3C/svg%3E')" }}></div>
 
         {/* Shield Icon neatly integrated INSIDE the card (Stripe style) */}
-        <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 shadow-sm border ${isHighProbability ? 'bg-green-50/80 border-green-200/60 text-green-600' : 'bg-red-50/80 border-red-200/60 text-red-600'}`}>
+        <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 shadow-sm border ${isHighProbability ? 'bg-emerald-50 border-emerald-200 text-emerald-500' : 'bg-red-50 border-red-200 text-accent-red'}`}>
           <ShieldCheck className="w-8 h-8" strokeWidth={2} />
         </div>
 
-        <h2 className="text-2xl sm:text-3xl font-semibold text-slate-900 mb-2 tracking-tight text-center">
+        <h2 className="text-2xl sm:text-3xl font-extrabold text-primary-navy mb-2 tracking-tight text-center drop-shadow-sm">
           Assessment Complete
         </h2>
-        <p className="text-slate-500 mb-8 max-w-sm mx-auto text-center font-medium text-sm sm:text-base">
+        <p className="text-primary-navy/70 mb-8 max-w-sm mx-auto text-center font-medium text-sm sm:text-base">
           {isHighProbability ? 'Your profile has been analyzed perfectly 🌍' : 'Analysis concluded based on metrics ⚖️'}
         </p>
         
         {/* Animated Score Box */}
         <motion.div 
           initial={{ scale: 0.95, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ delay: 0.4, type: 'spring', bounce: 0.4 }}
-          className={`w-full flex flex-col items-center justify-center p-8 rounded-2xl mb-6 relative overflow-hidden group transition-all duration-300 hover:shadow-md ${isHighProbability ? 'bg-gradient-to-b from-green-50/50 to-emerald-50/80 border border-green-100' : 'bg-gradient-to-b from-amber-50/50 to-orange-50/80 border border-amber-100'}`}
+          animate={{ 
+            scale: [0.95, 1.1, 1], 
+            opacity: 1 
+          }}
+          transition={{ 
+            delay: 0.4, 
+            type: 'spring', 
+            bounce: 0.4,
+            scale: { repeat: Infinity, repeatType: "mirror", duration: 1.5, ease: "easeInOut", delay: 1.5 }
+          }}
+          className={`w-full flex flex-col items-center justify-center p-8 rounded-2xl mb-6 relative overflow-hidden group transition-all duration-300 hover:shadow-lg ${isHighProbability ? 'bg-emerald-50 border border-emerald-200' : 'bg-orange-50 border border-orange-200'}`}
         >
-          <TrendingUp className={`w-6 h-6 mb-3 ${isHighProbability ? 'text-emerald-500' : 'text-amber-500'}`} />
-          <h3 className="text-xs font-bold text-slate-500 tracking-[0.2em] uppercase mb-1">Probability</h3>
+          <TrendingUp className={`w-6 h-6 mb-3 ${isHighProbability ? 'text-emerald-500' : 'text-accent-orange'}`} />
+          <h3 className="text-xs font-bold text-primary-navy/50 tracking-[0.2em] uppercase mb-1">Probability</h3>
           
           <div className="flex items-baseline gap-1">
-            <motion.span className={`text-6xl sm:text-7xl font-semibold tracking-tighter ${isHighProbability ? 'text-emerald-900' : 'text-amber-900'}`}>
+            <motion.span className={`text-6xl sm:text-7xl font-black tracking-tighter ${isHighProbability ? 'text-emerald-600' : 'text-primary-navy drop-shadow-sm'}`}>
               {rounded}
             </motion.span>
-            <span className={`text-2xl font-semibold ${isHighProbability ? 'text-emerald-500' : 'text-amber-500'}`}>%</span>
+            <span className={`text-2xl font-bold ${isHighProbability ? 'text-emerald-500' : 'text-accent-orange'}`}>%</span>
           </div>
         </motion.div>
 
@@ -113,12 +121,12 @@ export default function ResultReveal() {
             initial={{ y: 10, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.6 }}
-            className={`w-full flex flex-col sm:flex-row items-start gap-4 p-5 rounded-2xl border ${isHighProbability ? 'bg-emerald-50/40 border-emerald-100' : 'bg-rose-50/40 border-rose-100'}`}
+            className={`w-full flex flex-col sm:flex-row items-start gap-4 p-5 rounded-2xl border ${isHighProbability ? 'bg-emerald-50 border-emerald-200' : 'bg-rose-50 border-rose-200'}`}
           >
-             <AlertCircle className={`w-5 h-5 mt-0.5 shrink-0 ${isHighProbability ? 'text-emerald-600' : 'text-rose-600'}`} />
+             <AlertCircle className={`w-5 h-5 mt-0.5 shrink-0 ${isHighProbability ? 'text-emerald-500' : 'text-accent-red'}`} />
              <div>
-               <p className="text-sm font-semibold text-slate-900 mb-1">Status Overview</p>
-               <p className="text-sm text-slate-600 leading-relaxed">
+               <p className="text-sm font-bold text-primary-navy mb-1">Status Overview</p>
+               <p className="text-sm text-primary-navy/80 leading-relaxed font-medium">
                  {result.message}
                </p>
              </div>
@@ -128,12 +136,12 @@ export default function ResultReveal() {
             initial={{ y: 10, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.7 }}
-            className="w-full flex flex-col sm:flex-row items-start gap-4 p-5 rounded-2xl bg-blue-50/40 border border-blue-100"
+            className="w-full flex flex-col sm:flex-row items-start gap-4 p-5 rounded-2xl bg-amber-50 border border-amber-200"
           >
-            <Info className="w-5 h-5 mt-0.5 shrink-0 text-blue-600" />
+            <Info className="w-5 h-5 mt-0.5 shrink-0 text-amber-500" />
             <div>
-               <p className="text-sm font-semibold text-slate-900 mb-1">Recommendation</p>
-               <p className="text-sm text-slate-600 leading-relaxed">{result.recommendation}</p>
+               <p className="text-sm font-bold text-primary-navy mb-1">Recommendation</p>
+               <p className="text-sm text-primary-navy/80 leading-relaxed font-medium">{result.recommendation}</p>
             </div>
           </motion.div>
         </div>
@@ -146,17 +154,17 @@ export default function ResultReveal() {
           initial={{ opacity: 0, y: 10, scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ delay: 0.85, type: 'spring', stiffness: 200 }}
-          className="w-full relative overflow-hidden group mb-10 p-[1px] rounded-2xl bg-gradient-to-r from-amber-200 via-orange-300 to-rose-300 shadow-sm hover:shadow-md hover:-translate-y-1 active:translate-y-0 transition-transform duration-300 block cursor-pointer"
+          className="w-full relative overflow-hidden group mb-10 p-[1px] rounded-2xl bg-gradient-to-r from-accent-orange to-accent-red shadow-[0_10px_30px_rgba(243,156,18,0.25)] hover:-translate-y-1 active:translate-y-0 transition-transform duration-300 block cursor-pointer"
         >
-          <div className="w-full flex items-center justify-center gap-3 px-6 py-4 rounded-2xl bg-white/95 backdrop-blur-xl group-hover:bg-white/90 transition-colors">
+          <div className="w-full flex items-center justify-center gap-3 px-6 py-4 rounded-2xl bg-white/95 backdrop-blur-xl group-hover:bg-white/80 transition-colors">
             <span className="relative flex h-2.5 w-2.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-orange-500"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-orange opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-accent-orange"></span>
             </span>
-            <span className="text-[13px] font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-rose-600 tracking-widest uppercase mt-0.5">
+            <span className="text-[13px] font-bold bg-clip-text text-transparent bg-gradient-to-r from-accent-orange to-accent-red tracking-widest uppercase mt-0.5">
               Shop like you're in India
             </span>
-            <span className="text-lg">✨</span>
+            <span className="text-lg drop-shadow-sm">✨</span>
           </div>
         </motion.a>
 
@@ -165,48 +173,51 @@ export default function ResultReveal() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.9 }}
-          className="w-full flex flex-col items-center pt-8 border-t border-slate-100"
+          className="w-full flex flex-col items-center pt-8 border-t border-slate-200"
         >
           <div className="w-full flex items-center justify-between mb-5">
-            <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider">Support & Sharing</h4>
+            <h4 className="text-xs font-bold text-primary-navy/50 uppercase tracking-wider">Support & Sharing</h4>
           </div>
 
           <div className="w-full flex flex-col sm:flex-row items-center gap-3 mb-8">
             <Button 
               onClick={() => window.open('https://wa.me/918209893843?text=Hello%2C%20I%20need%20help%20with%20my%20citizenship%20calculator%20result.', '_blank')} 
               variant="outline" 
-              className="flex-1 w-full h-12 gap-2 border-slate-200 hover:bg-slate-50 hover:border-slate-300 text-slate-700 font-medium transition-all shadow-sm rounded-xl hover:-translate-y-0.5"
+              className="flex-1 w-full h-12 gap-2 border-slate-300 hover:bg-slate-50 hover:border-slate-400 text-primary-navy font-bold transition-all shadow-[0_2px_10px_rgba(0,0,0,0.02)] rounded-xl hover:-translate-y-0.5"
             >
-              <WhatsAppIcon className="w-4 h-4 text-emerald-500" />
+              <WhatsAppIcon className="w-5 h-5 text-[#25D366]" />
               WhatsApp Support
             </Button>
 
             <Button 
               onClick={handleCopy} 
               variant="outline" 
-              className="flex-1 w-full h-12 gap-2 border-slate-200 hover:bg-slate-50 hover:border-slate-300 text-slate-700 font-medium transition-all shadow-sm rounded-xl hover:-translate-y-0.5"
+              className="flex-1 w-full h-12 gap-2 border-slate-300 hover:bg-slate-50 hover:border-slate-400 text-primary-navy font-bold transition-all shadow-[0_2px_10px_rgba(0,0,0,0.02)] rounded-xl hover:-translate-y-0.5"
             >
-              {copied ? <Check className="w-4 h-4 text-emerald-500" /> : <Share2 className="w-4 h-4 text-slate-400" />}
+              {copied ? <Check className="w-5 h-5 text-emerald-500" /> : <Share2 className="w-5 h-5 text-primary-navy/70" />}
               {copied ? 'Link Copied' : 'Copy Link'}
             </Button>
           </div>
 
           {/* Elegant Email Text Layout */}
           <div className="flex flex-col items-center">
-            <span className="text-xs text-slate-400 font-medium tracking-wide uppercase mb-1">Email us directly</span>
+            <span className="text-xs text-primary-navy/50 font-bold tracking-wide uppercase mb-1">Email us directly</span>
             <a 
               href="mailto:support@ganges.world" 
-              className="group flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-blue-600 transition-colors"
+              className="group flex items-center gap-2 text-sm font-bold text-primary-navy relative"
             >
-              <Mail className="w-4 h-4 text-slate-400 group-hover:text-blue-600 transition-colors" />
-              support@ganges.world
+              <Mail className="w-4 h-4 text-primary-navy/50 group-hover:text-accent-orange transition-all duration-300 group-hover:-translate-y-0.5 group-hover:scale-110" />
+              <span className="relative">
+                support@ganges.world
+                <span className="absolute -bottom-0.5 left-0 w-full h-[1.5px] bg-accent-orange origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-[cubic-bezier(0.25,1,0.5,1)]" />
+              </span>
             </a>
           </div>
           
           <Button 
             onClick={setLanding} 
             variant="ghost" 
-            className="w-full mt-8 h-12 text-slate-400 hover:text-slate-900 gap-2 hover:bg-slate-50 transition-all rounded-xl font-medium"
+            className="w-full mt-8 h-12 text-primary-navy/60 hover:text-primary-navy gap-2 hover:bg-slate-100 transition-all rounded-xl font-bold"
           >
             <Repeat className="w-4 h-4" />
             Restart Assessment

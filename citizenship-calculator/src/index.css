@@ -1,13 +1,16 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary-900: #0A1F44;
-  --color-accent-gold: #C8A95E;
+  --color-primary-navy: #003865;
+  --color-accent-orange: #F39C12;
+  --color-accent-red: #D32F2F;
+  --color-accent-ocean: #2980B9;
+  --color-base-cream: #FFF4E0; /* Very warm beautiful poster cream */
 }
 
 @layer base {
   body {
-    @apply bg-slate-50 text-slate-900 antialiased;
+    @apply bg-base-cream text-primary-navy antialiased;
   }
 }
 
@@ -23,12 +26,12 @@
     @apply top-[5px];
   }
   .react-datepicker__day--selected, .react-datepicker__day--in-selecting-range, .react-datepicker__day--in-range, .react-datepicker__month-text--selected, .react-datepicker__month-text--in-selecting-range, .react-datepicker__month-text--in-range, .react-datepicker__quarter-text--selected, .react-datepicker__quarter-text--in-selecting-range, .react-datepicker__quarter-text--in-range, .react-datepicker__year-text--selected, .react-datepicker__year-text--in-selecting-range, .react-datepicker__year-text--in-range {
-    @apply !bg-blue-600 rounded-[8px] hover:!bg-blue-700;
+    @apply !bg-orange-600 rounded-[8px] hover:!bg-orange-700;
   }
   .react-datepicker__day:hover {
     @apply rounded-[8px] bg-slate-100;
   }
   .react-datepicker__day--keyboard-selected {
-    @apply rounded-[8px] bg-blue-100 text-blue-800;
+    @apply rounded-[8px] bg-orange-100 text-orange-800;
   }
 }

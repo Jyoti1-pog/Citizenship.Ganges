@@ -12,16 +12,16 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
     return (
       <div className="flex flex-col gap-1.5 w-full">
         {label && (
-          <label htmlFor={id} className="text-sm font-medium text-slate-700">
+          <label htmlFor={id} className="text-sm font-medium text-primary-navy">
             {label}
-            {props.required && <span className="text-red-500 ml-1">*</span>}
+            {props.required && <span className="text-accent-orange ml-1">*</span>}
           </label>
         )}
         <div className="relative">
           <select
             id={id}
             className={cn(
-              'flex h-11 w-full appearance-none rounded-md border border-slate-300 bg-white px-3 py-2 pr-10 text-base ring-offset-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-900 disabled:cursor-not-allowed disabled:opacity-50',
+              'flex h-11 w-full appearance-none rounded-md border border-slate-300 bg-white px-3 py-2 pr-10 text-base text-primary-navy ring-offset-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-orange disabled:cursor-not-allowed disabled:opacity-50',
               error && 'border-red-500 focus-visible:ring-red-500',
               className
             )}
