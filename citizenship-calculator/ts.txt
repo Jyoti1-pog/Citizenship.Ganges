@@ -1,0 +1,16 @@
+src/components/CalculatorForm.tsx(4,28): error TS6133: 'VisaStatus' is declared but its value is never read.
+src/components/CalculatorForm.tsx(14,15): error TS2353: Object literal may only specify known properties, and 'invalid_type_error' does not exist in type '{ error?: string | $ZodErrorMap<$ZodIssueInvalidType<unknown>> | undefined; message?: string | undefined; }'.
+src/components/CalculatorForm.tsx(17,17): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(values: readonly ["Student Visa", "Work Permit", "Permanent Resident", "Investor Visa", "Temporary Protection", "Other"], params?: string | { error?: string | $ZodErrorMap<$ZodIssueInvalidValue<unknown>> | undefined; message?: string | undefined; } | undefined): ZodEnum<...>', gave the following error.
+    Object literal may only specify known properties, and 'errorMap' does not exist in type '{ error?: string | $ZodErrorMap<$ZodIssueInvalidValue<unknown>> | undefined; message?: string | undefined; }'.
+  Overload 2 of 2, '(entries: Readonly<Record<string, EnumValue>>, params?: string | { error?: string | $ZodErrorMap<$ZodIssueInvalidValue<unknown>> | undefined; message?: string | undefined; } | undefined): ZodEnum<...>', gave the following error.
+    Argument of type 'string[]' is not assignable to parameter of type 'Readonly<Record<string, EnumValue>>'.
+      Index signature for type 'string' is missing in type 'string[]'.
+src/components/CalculatorForm.tsx(37,5): error TS2322: Type 'Resolver<{ dob: string; yearsLived: unknown; visaStatus: "Student Visa" | "Work Permit" | "Permanent Resident" | "Investor Visa" | "Temporary Protection" | "Other"; }, any, { dob: string; yearsLived: number; visaStatus: "Student Visa" | ... 4 more ... | "Other"; }>' is not assignable to type 'Resolver<FormData, any, FormData>'.
+  Types of parameters 'options' and 'options' are incompatible.
+    Type 'ResolverOptions<FormData>' is not assignable to type 'ResolverOptions<{ dob: string; yearsLived: unknown; visaStatus: "Student Visa" | "Work Permit" | "Permanent Resident" | "Investor Visa" | "Temporary Protection" | "Other"; }>'.
+      Type 'unknown' is not assignable to type 'number'.
+src/components/CalculatorForm.tsx(56,36): error TS2345: Argument of type '(data: FormData) => Promise<void>' is not assignable to parameter of type 'SubmitHandler<TFieldValues>'.
+  Types of parameters 'data' and 'data' are incompatible.
+    Type 'TFieldValues' is not assignable to type 'FormData'.
+      Type 'FieldValues' is missing the following properties from type 'FormData': dob, yearsLived, visaStatus
