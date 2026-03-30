@@ -1,8 +1,7 @@
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { useAppStore, type FormData } from '@/store/useAppStore';
-import { calculateCitizenship } from '@/utils/calculateCitizenship';
+import { type FormData } from '@/store/useAppStore';
 import { DatePicker } from '@/components/ui/DatePicker';
 import { differenceInYears } from 'date-fns';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
@@ -46,9 +45,6 @@ const formItemVariant: Variants = {
 };
 
 export function CalculatorForm() {
-  const setLoading = useAppStore((s) => s.setLoading);
-  const setResult = useAppStore((s) => s.setResult);
-  
   const {
     register,
     handleSubmit,
@@ -60,10 +56,9 @@ export function CalculatorForm() {
   });
 
   const onSubmit = async (data: FormData) => {
-    setLoading(data);
-    const resultObject = calculateCitizenship(data);
-    await new Promise((resolve) => setTimeout(resolve, 3000));
-    setResult(resultObject);
+    // Just simulate network wait to give satisfying button feedback, but it's a static page
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+    console.log("Form Submitted", data);
   };
 
   return (

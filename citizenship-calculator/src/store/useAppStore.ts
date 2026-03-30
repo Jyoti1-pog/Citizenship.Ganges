@@ -1,5 +1,4 @@
 import { create } from 'zustand'
-import { type CitizenshipResult } from '@/utils/calculateCitizenship';
 
 export type VisaStatus = 
   | 'Student Visa'
@@ -15,24 +14,14 @@ export interface FormData {
   visaStatus: VisaStatus;
 }
 
-type AppState =
-  | { status: 'landing' }
-  | { status: 'form' }
-  | { status: 'loading'; formData: FormData }
-  | { status: 'result'; result: CitizenshipResult };
+type AppState = { status: 'form' };
 
 interface AppStore {
   state: AppState;
-  setLanding: () => void;
   setForm: () => void;
-  setLoading: (data: FormData) => void;
-  setResult: (result: CitizenshipResult) => void;
 }
 
 export const useAppStore = create<AppStore>((set) => ({
-  state: { status: 'landing' },
-  setLanding: () => set({ state: { status: 'landing' } }),
+  state: { status: 'form' },
   setForm: () => set({ state: { status: 'form' } }),
-  setLoading: (formData) => set({ state: { status: 'loading', formData } }),
-  setResult: (result) => set({ state: { status: 'result', result } }),
 }));
